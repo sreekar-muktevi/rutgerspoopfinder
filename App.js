@@ -1,21 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Text, View, StyleSheet} from 'react-native';
-import MapView from 'react-native-maps';
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, Text, View, StyleSheet } from "react-native";
+import MapView from "react-native-maps";
+import CurrentLocation from "./currentLocation";
 // It can be any of these: arrival-estimates, agencies, routes, segments, stops, vehicles
 async function hi() {
   const url =
-    'https://transloc-api-1-2.p.rapidapi.com/vehicles.json?agencies=1323';
+    "https://transloc-api-1-2.p.rapidapi.com/vehicles.json?agencies=1323";
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      'X-RapidAPI-Key': '2db6175e9bmsh7aab84ab1852e64p1da0cdjsnd0476b706254',
-      'X-RapidAPI-Host': 'transloc-api-1-2.p.rapidapi.com',
+      "X-RapidAPI-Key": "2db6175e9bmsh7aab84ab1852e64p1da0cdjsnd0476b706254",
+      "X-RapidAPI-Host": "transloc-api-1-2.p.rapidapi.com",
     },
   };
   return fetch(url, options)
-    .then(response => response.json())
-    .catch(error => {
+    .then((response) => response.json())
+    .catch((error) => {
       console.error(error);
     });
 }
@@ -55,7 +56,7 @@ export default function App() {
               longitudeDelta: 0.0421,
             }}
           />
-          <Text style="font-size: 150px">{JSON.stringify(data)}</Text>
+          <Text style="font-size: 150px">{<CurrentLocation />}</Text>
         </React.Fragment>
       )}
     </View>
@@ -66,11 +67,10 @@ const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
     flex: 1, //the container will fill the whole screen.
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   map: {
     ...StyleSheet.absoluteFillObject,
   },
 });
-
