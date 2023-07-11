@@ -107,7 +107,15 @@ g.addEdge(4259046, 4259062, 3); // BHE: BLHC -> BSC
 g.addEdge(4229570, 4255110, 2); // B/BHE: LP -> LSC
 g.addEdge(4255110, 4266590, 2); // B/BHE: LSC -> Quads
 
-console.log(g);
-console.log(g.neighbors(4259062));
+// console.log(g);
+// console.log(g.neighbors(4259062));
 
-console.log(dijkstra(g, 4259062));
+// console.log(dijkstra(g, 4259062));
+
+async function logMovies() {
+  const response = await fetch("/user");
+  const movies = await response.json();
+  console.log(movies);
+}
+
+logMovies();
