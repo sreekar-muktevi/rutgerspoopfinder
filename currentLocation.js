@@ -46,11 +46,8 @@ export default function CurrentLocation() {
         value={address}
         onChangeText={setAddress}
       />
-      <Button title="Geocode Address" onPress={geocode} />
-      <Button
-        title="Reverse Geocode Current Location"
-        onPress={reverseGeocode}
-      />
+      <Button title="Address Info" onPress={geocode} />
+      <Button title="Click to Get Current Location" onPress={reverseGeocode} />
       <StatusBar style="auto" />
     </View>
   );
