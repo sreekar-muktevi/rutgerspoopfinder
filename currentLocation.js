@@ -42,7 +42,7 @@ export default function CurrentLocation() {
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Address"
+        placeholder="Enter Address"
         value={address}
         onChangeText={setAddress}
       />
