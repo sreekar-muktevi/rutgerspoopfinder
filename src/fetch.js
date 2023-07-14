@@ -1,11 +1,10 @@
-const fetch = require('node-fetch');
 class JSONReader {
     constructor(filePath) {
         this.filePath = filePath;
     }
   
     readJSON() {
-      return fetch(`file://${this.filePath}`)
+      return fetch(this.filePath)
         .then(response => response.json())
         .then(data => {
           return data;
@@ -16,7 +15,7 @@ class JSONReader {
     }
 }
 
-const jsonReader = new JSONReader('/translocdata/stops.json');
+const jsonReader = new JSONReader('stops.json');
 
 jsonReader.readJSON()
     .then(data => { 
