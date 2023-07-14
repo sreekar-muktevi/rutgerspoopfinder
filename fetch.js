@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 class JSONReader {
     constructor(filePath) {
         this.filePath = filePath;
