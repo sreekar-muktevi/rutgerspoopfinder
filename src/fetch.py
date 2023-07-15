@@ -7,31 +7,47 @@ def read_json(file_path):
         data = json.load(file)
         return data
 
-# Object for stops.json
-json_stops = read_json('json/stops.json')
-json_stops = json_stops["data"]
+#----------------------------------------------------------------------------------------------------------------
 
-# Cleaning Data: Getting rid of Newark and Camden stops
-i = 0
-while(i < len(json_stops)):
-    if json_stops[i]["description"] == "we assigned code":
-        del json_stops[i]
-    elif json_stops[i]["location"]["lng"] < -75:
-        del json_stops[i]
-    else: i = i+1
+# Object for stops.json
+stops = read_json('json/stops.json')
+stops = stops["data"]
 
 # Fills an array with all the stop IDs
 stop_ids = []
-for i in range(0, len(json_stops)):
-    stop_ids.append(json_stops[i]["stop_id"])
-
-print(stop_ids)
-print()
+for i in range(0, len(stops)):
+    if stops[i]["location"]["lat"] > 40.6 or stops[i]["location"]["lng"] < -75:
+        stop_ids.append(None)
+    else:
+        stop_ids.append(stops[i]["stop_id"])
 
 # Fills an array with all the stop names
 stop_names = []
-for i in range(0, len(json_stops)):
-    stop_names.append(json_stops[i]["name"])
+for i in range(0, len(stops)):
+    if stops[i]["location"]["lat"] > 40.6 or stops[i]["location"]["lng"] < -75:
+        stop_names.append(None)
+    else:
+        stop_names.append(stops[i]["name"])
 
-print(stop_names)
-print()
+#---------------------------------------------------------------------------------------------------------------
+
+# Object for routes.json
+routes = read_json('json/routes.json')
+routes = routes["data"]["1323"]
+
+# Fills an array with a list of stops in each route
+route_stops = []
+for i in range(0, len(routes)):
+    if "Route" in routes[i]["long_name"]:
+        route_stops.append(routes[i]["stops"])
+    else: route_stops.append(None)
+
+
+# Fills an array with the names of each route
+route_names = []
+for i in range(0, len(routes)):
+    if "Route" in routes[i]["long_name"]:
+        route_names.append(routes[i]["long_name"])
+    else: route_names.append(None)
+
+#---------------------------------------------------------------------------------------------------------------
