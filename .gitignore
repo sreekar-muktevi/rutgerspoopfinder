@@ -9,7 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-request.py
+src/request.py
 
 # macOS
 .DS_Store
